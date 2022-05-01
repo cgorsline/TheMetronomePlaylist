@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MetronomeFragment">
+
+    <fragment
+        android:id="@+id/MetronomeFragment"
+        android:name="com.example.themetronomeplaylist.fragments.DigitalMetronomeFragment"
+        android:label="@string/metronome_fragment_label"
+        tools:layout="@layout/fragment_digital_metronome">
+
+        <action
+            android:id="@+id/action_MetronomeFragment_to_InfoFragment"
+            app:destination="@id/info_fragment" />
+        <action
+            android:id="@+id/action_MetronomeFragment_to_mechanicalMetronomeFragment"
+            app:destination="@id/mechanicalMetronomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/info_fragment"
+        android:name="com.example.themetronomeplaylist.fragments.InfoFragment"
+        android:label="@string/info_fragment_label"
+        tools:layout="@layout/fragment_info"/>
+    <fragment
+        android:id="@+id/mechanicalMetronomeFragment"
+        android:name="com.example.themetronomeplaylist.fragments.MechanicalMetronomeFragment"
+        android:label="@string/mechanical_metronome"
+        tools:layout="@layout/fragment_mechanical_metronome" />
+</navigation>
