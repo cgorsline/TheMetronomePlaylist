@@ -3,12 +3,52 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3475" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/beat_circle_empty.xml" value="0.3475" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/beat_circle_full.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/beat_circle_off.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/button_background.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/first_beat_circle_empty.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/first_beat_circle_empty_no_emphasis.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/first_beat_circle_full.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/first_beat_circle_full_no_emphasis.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_arrow_drop_up.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_eighth_note.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_emphasis.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_info.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3475" />
         <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3475" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_metronome_arm.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_metronome_icon_circle_bg.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_metronome_icon_large.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_metronome_icon_white.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_metronome_launcher_foreground.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_notes_background_faint.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_pause.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_play.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_quarter_note.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_quarter_note_faint.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_quarter_note_white.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_rotary_knob.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_sixteenth_note.xml" value="0.1635" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_wooden_metronome.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/ic_wooden_metronome_lid.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/metronome_background_gradient.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/metronome_launcher_background.xml" value="0.178" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/drawable/screen_background.xml" value="0.322" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/font/aldrich.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/content_main.xml" value="0.3625" />
         <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/fragment_abstract_metronome.xml" value="0.3625" />
         <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/fragment_digital_metronome.xml" value="0.3625" />
         <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/fragment_info.xml" value="0.3625" />
         <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/fragment_mechanical_metronome.xml" value="0.3625" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/rotary_knob_view.xml" value="0.3625" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/layout/tones_view.xml" value="0.3625" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/menu/menu_main.xml" value="0.3625" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.322" />
+        <entry key="..\:/Users/craig/AndroidStudioProjects/TheMetronomePlaylist/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.322" />
       </map>
     </option>
   </component>

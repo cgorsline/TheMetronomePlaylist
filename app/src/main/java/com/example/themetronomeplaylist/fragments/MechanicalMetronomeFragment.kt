@@ -12,10 +12,9 @@ import android.view.Gravity.CENTER
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.GridLayout.CENTER
-import kotlinx.android.synthetic.main.mechanical_metronome_fragment.*
-import com.example.themetronomeplaylist.R
+import kotlinx.android.synthetic.main.fragment_mechanical_metronome.*
 
-class MechanicalMetronomeFragment : AbstrtactMetronomeFragment() {
+class MechanicalMetronomeFragment : AbstractMetronomeFragment() {
 
     private var duration = 1000L
     private var position = Position.CENTER
@@ -24,7 +23,7 @@ class MechanicalMetronomeFragment : AbstrtactMetronomeFragment() {
     private lateinit var leftToRightAnimation: Animation
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.mechanical_metronome_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_mechanical_metronome, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

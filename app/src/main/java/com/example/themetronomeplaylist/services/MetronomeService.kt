@@ -8,7 +8,9 @@ import android.os.Binder
 import android.graphics.drawable.Icon
 import android.media.AudioAttributes
 import android.media.SoundPool
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.themetronomeplaylist.MainActivity
 import com.example.themetronomeplaylist.R
 import kotlinx.coroutines.*
@@ -22,7 +24,7 @@ private const val MIN_BPM = 40
 // Metronome Service is responsible for the timing, playing and stopping. It persists throughout.
 
 
-class MetronomeService : Service() {
+abstract class MetronomeService : Service() {
 
     private val binder = MetronomeBinder()
     private lateinit var soundPool: SoundPool
@@ -59,6 +61,7 @@ class MetronomeService : Service() {
         soundPool.load(this, R.raw.beep, 1)
         }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun startForegroundNotification() {
         val mChannel = NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_LOW)
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
@@ -83,6 +86,7 @@ class MetronomeService : Service() {
         startForeground(1, notification)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun setBeatsUp(): Int {
         if(beatsPerMeasure < 9) {
             beatsPerMeasure++
@@ -94,6 +98,7 @@ class MetronomeService : Service() {
         return beatsPerMeasure
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun setBeatsDown(): Int {
         if(beatsPerMeasure > 1) {
             beatsPerMeasure--
@@ -110,6 +115,7 @@ class MetronomeService : Service() {
         Log.i(TAG, "Metronome service destroyed")
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun play() {
         if (!isPlaying) {
             startForegroundNotification()
@@ -159,6 +165,7 @@ class MetronomeService : Service() {
         return emphasis
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun nextRhythm(): Rhythm {
         val isPlaying = this.isPlaying
         rhythm = rhythm.next()
@@ -178,6 +185,11 @@ class MetronomeService : Service() {
 
     fun addTickListener(tickListener: TickListener) {
         tickListeners.add(tickListener)
+        Log.i(TAG, "number of listeners ${tickListeners.size}")
+    }
+
+    fun removeTickListener(tickListener: TickListener) {
+        tickListeners.remove(tickListener)
         Log.i(TAG, "number of listeners ${tickListeners.size}")
     }
 

@@ -1,5 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">The Metronome Playlist</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Timekeeper Metronome</string>
+    <string name="info_menu_item">Information</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="metronome_fragment_label">Metronome</string>
+    <string name="info_fragment_label">About</string>
+    <string name="notification_title">Metronome</string>
+    <string name="notification_message">Metronome is running...</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="bpm">BPM</string>
+    <string name="eights">888</string>
+    <string name="tempo">TEMPO</string>
+    <string name="rhythm">RHYTHM</string>
+    <string name="tone">TONE</string>
+    <string name="beat">BEAT</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
+    <string name="wood">WOOD</string>
+    <string name="click">CLICK</string>
+    <string name="ding">DING</string>
+    <string name="beep">BEEP</string>
+    <string name="tap">tap</string>
+    <string name="about_text"></string>
+    <string name="aboutFooterText"></string>
+    <string name="aboutHeading">About Timekeeper Metronome</string>
+    <string name="mechanical_metronome">Metronome</string>
+    <string name="metronome_arm">metronome_arm</string>
 </resources>

@@ -1,29 +1,31 @@
 package com.example.themetronomeplaylist.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import com.example.themetronomeplaylist.R
 import android.content.Context
+import android.os.Build
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.example.themetronomeplaylist.services.MetronomeService
 import com.example.themetronomeplaylist.views.RotaryKnobView
-import kotlinx.android.synthetic.main.digital_metronome_fragment.*
+import kotlinx.android.synthetic.main.fragment_digital_metronome.*
 
 const val DEFAULT_BPM = 120
 // Main metronome fragment
-class DigitalMetronomeFragment : AbstractMetronomeFragment(), RotaryKnobView.RotaryKnobListener, TextView.OnEditorActionListener, View.OnTouchListener {
+abstract class DigitalMetronomeFragment : AbstractMetronomeFragment(), RotaryKnobView.RotaryKnobListener, TextView.OnEditorActionListener, View.OnTouchListener {
 
     private var lastTapMil: Long = 0
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.digital_metronome_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_digital_metronome, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         playButton.setOnClickListener {this.play()}
@@ -50,17 +52,19 @@ class DigitalMetronomeFragment : AbstractMetronomeFragment(), RotaryKnobView.Rot
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateBeatsUp() {
         val beats = metronomeService?.setBeatsUp()
         beatsView.beatsPerMeasure = beats!!
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateBeatsDown() {
         val beats = metronomeService?.setBeatsDown()
         beatsView.beatsPerMeasure = beats!!
     }
 
-    private fun tapTempAction() {
+    private fun tapTempo() {
         val currentMil = System.currentTimeMillis()
         val difference = currentMil - lastTapMil
         val calculatedBpm = (60000 / difference).toInt()
@@ -84,11 +88,12 @@ class DigitalMetronomeFragment : AbstractMetronomeFragment(), RotaryKnobView.Rot
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun nextRhythm() {
         val drawable = when (metronomeService?.nextRhythm()) {
             MetronomeService.Rhythm.QUARTER -> R.drawable.ic_quarter_note
             MetronomeService.Rhythm.EIGHTH -> R.drawable.ic_eighth_note
-            MetronomeService.Rhyhthm.SIXTEENTH ->  R.drawable.ic_sixteenth_note
+            MetronomeService.Rhythm.SIXTEENTH ->  R.drawable.ic_sixteenth_note
             null -> R.drawable.ic_quarter_note
         }
         rhythmImage.setImageDrawable(
@@ -99,6 +104,7 @@ class DigitalMetronomeFragment : AbstractMetronomeFragment(), RotaryKnobView.Rot
         beatsView.resetBeats(true)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun play() {
         beatsView.resetBeats(true)
         metronomeService?.play()

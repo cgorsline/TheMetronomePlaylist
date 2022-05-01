@@ -9,14 +9,13 @@ import com.example.themetronomeplaylist.R
 import android.text.method.LinkMovementMethod
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import com.example.themetronomeplaylist.R
-import kotlinx.android.synthetic.main.info_fragment.*
-import kotlinx.android.synthetic.main.digital_metronome_fragment.*
+import kotlinx.android.synthetic.main.fragment_info.*
+import kotlinx.android.synthetic.main.fragment_digital_metronome.*
 
 class InfoFragment : Fragment() {
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.info_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_info, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

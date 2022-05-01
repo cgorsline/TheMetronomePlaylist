@@ -2,9 +2,7 @@ package com.example.themetronomeplaylist.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -26,7 +24,7 @@ abstract class AbstractMetronomeFragment : Fragment(), MetronomeService.TickList
         isBound = true
     }
 
-    protected val MConnection: ServiceConnection = object : ServiceConnection {
+    protected val mConnection: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             metronomeService = (service as MetronomeService.MetronomeBinder).getService()
             metronomeService?.addTickListener(this@AbstractMetronomeFragment)
@@ -42,7 +40,7 @@ abstract class AbstractMetronomeFragment : Fragment(), MetronomeService.TickList
         super.onDestroy()
         if (isBound) {
             metronomeService?.removeTickListener(this)
-            activity!!.unbindService(mConnection)
+            requireActivity().unbindService(mConnection)
             isBound = false
         }
     }
