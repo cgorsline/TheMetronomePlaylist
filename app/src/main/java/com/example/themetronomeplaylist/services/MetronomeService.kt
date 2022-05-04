@@ -1,18 +1,15 @@
-package com.example.themetronomeplaylist.services
+package geva.oren.android_kotlin_metronome.services
 
-import android.app.Service
 import android.app.*
 import android.content.Intent
-import android.os.IBinder
-import android.os.Binder
 import android.graphics.drawable.Icon
 import android.media.AudioAttributes
 import android.media.SoundPool
-import android.os.Build
+import android.os.Binder
+import android.os.IBinder
 import android.util.Log
-import androidx.annotation.RequiresApi
-import com.example.themetronomeplaylist.MainActivity
-import com.example.themetronomeplaylist.R
+import geva.oren.android_kotlin_metronome.MainActivity
+import geva.oren.android_kotlin_metronome.R
 import kotlinx.coroutines.*
 
 private const val TAG = "METRONOME_SERVICE"
@@ -20,12 +17,13 @@ private const val CHANNEL_ID = "METRONOME SERVICE"
 private const val STOP_SERVICE = "STOP_METRONOME_SERVICE"
 private const val MAX_BPM = 220
 private const val MIN_BPM = 40
-
-// Metronome Service is responsible for the timing, playing and stopping. It persists throughout.
-
-
-abstract class MetronomeService : Service() {
-
+/**
+ * The Metronome service is responsible for playing, stoping and timing the ticks.
+ * It is a started AND bound service, so it can persist and survive device rotation, and allow
+ * The fragments to bind keep referencing it.
+ * The service is starting foreground mode on play() and exits it on stop().
+ */
+class MetronomeService : Service() {
     private val binder = MetronomeBinder()
     private lateinit var soundPool: SoundPool
     private var tickJob: Job? = null
@@ -34,10 +32,12 @@ abstract class MetronomeService : Service() {
     private var beatsPerMeasure = 4
     private var interval = 600
     var isPlaying = false
-    private set
+        private set
     private val tickListeners = arrayListOf<TickListener>()
-    private var tone = Tone.WOOD
-    private var rhythm = Rhythm.QUARTER
+    private var tone =
+        Tone.WOOD
+    private var rhythm =
+        Rhythm.QUARTER
     private var emphasis = true
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -52,27 +52,34 @@ abstract class MetronomeService : Service() {
         super.onCreate()
         Log.i(TAG, "Metronome service created")
         soundPool = SoundPool.Builder()
-            .setMaxStreams(4)
-            .setAudioAttributes(AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build())
+            .setMaxStreams(4) // to prevent delaying the next tick under any circumstances
+            .setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build()
+            )
             .build()
         soundPool.load(this, R.raw.wood, 1)
-        soundPool.load(this, R.raw.click,1)
-        soundPool.load(this, R.raw.ding,1)
+        soundPool.load(this, R.raw.click, 1)
+        soundPool.load(this, R.raw.ding, 1)
         soundPool.load(this, R.raw.beep, 1)
-        }
+    }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    // Notification for enabling a foreground service
     private fun startForegroundNotification() {
         val mChannel = NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_LOW)
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(mChannel)
-        val pendingIntent: PendingIntent = Intent(this, MainActivity::class.java).let {
-            notificationIntent -> PendingIntent.getActivity(this, 0, notificationIntent, 0)
-        }
+
+        val pendingIntent: PendingIntent =
+            Intent(this, MainActivity::class.java).let { notificationIntent ->
+                PendingIntent.getActivity(this, 0, notificationIntent, 0)
+            }
         val stopSelf = Intent(this, MetronomeService::class.java)
         stopSelf.action = STOP_SERVICE
         val pStopSelf = PendingIntent.getService(this, 0, stopSelf, PendingIntent.FLAG_CANCEL_CURRENT)
         val stopAction = Notification.Action.Builder(Icon.createWithResource(this, android.R.drawable.ic_media_pause), "Stop", pStopSelf).build()
+
         val notification: Notification = Notification.Builder(this, CHANNEL_ID)
             .setContentTitle(getText(R.string.notification_title))
             .setContentText(getText(R.string.notification_message))
@@ -86,7 +93,6 @@ abstract class MetronomeService : Service() {
         startForeground(1, notification)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun setBeatsUp(): Int {
         if(beatsPerMeasure < 9) {
             beatsPerMeasure++
@@ -98,7 +104,6 @@ abstract class MetronomeService : Service() {
         return beatsPerMeasure
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun setBeatsDown(): Int {
         if(beatsPerMeasure > 1) {
             beatsPerMeasure--
@@ -115,9 +120,12 @@ abstract class MetronomeService : Service() {
         Log.i(TAG, "Metronome service destroyed")
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onBind(intent: Intent): IBinder {
+        return binder
+    }
+
     fun play() {
-        if (!isPlaying) {
+        if(!isPlaying) {
             startForegroundNotification()
             tickJob = coroutineScope.launch(Dispatchers.Default) {
                 isPlaying = true
@@ -142,13 +150,17 @@ abstract class MetronomeService : Service() {
     }
 
     fun pause() {
-        if (isPlaying) {
+        if(isPlaying) {
             tickJob?.cancel()
             stopForeground(true)
             isPlaying = false
         }
     }
 
+    /**
+     * Accepts bpm value an sets the interval in ms
+     * @param bpm - the bpm value
+     */
     fun setBpm(bpm: Int): Int {
         if (bpm < MIN_BPM)
             this.bpm = MIN_BPM
@@ -160,12 +172,17 @@ abstract class MetronomeService : Service() {
         return this.bpm
     }
 
+    /**
+     * Toggle emphasis on/off
+     */
     fun toggleEmphasis(): Boolean {
         emphasis = !emphasis
         return emphasis
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    /**
+     * Rotates to the next rhythm
+     */
     fun nextRhythm(): Rhythm {
         val isPlaying = this.isPlaying
         rhythm = rhythm.next()
@@ -177,6 +194,9 @@ abstract class MetronomeService : Service() {
         return rhythm
     }
 
+    /**
+     * Rotates to the next sound
+     */
     fun nextTone(): Tone {
         tone = tone.next()
         setBpm(bpm)
@@ -193,7 +213,7 @@ abstract class MetronomeService : Service() {
         Log.i(TAG, "number of listeners ${tickListeners.size}")
     }
 
-    inner class  MetronomeBinder : Binder() {
+    inner class MetronomeBinder : Binder() {
         fun getService(): MetronomeService {
             return this@MetronomeService
         }
@@ -206,7 +226,7 @@ abstract class MetronomeService : Service() {
         BEEP(4);
 
         companion object {
-            private val values= values()
+            private val values = values()
         }
 
         fun next(): Tone {
@@ -232,3 +252,6 @@ abstract class MetronomeService : Service() {
         fun onTick(interval: Int)
     }
 }
+
+
+
