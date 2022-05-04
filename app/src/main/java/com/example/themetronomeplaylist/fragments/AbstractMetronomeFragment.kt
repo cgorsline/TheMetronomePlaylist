@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.view.View
 import androidx.fragment.app.Fragment
-import geva.oren.android_kotlin_metronome.services.MetronomeService
+import com.example.themetronomeplaylist.services.MetronomeService
 
 abstract class AbstractMetronomeFragment : Fragment(), MetronomeService.TickListener{
     protected var isBound = false

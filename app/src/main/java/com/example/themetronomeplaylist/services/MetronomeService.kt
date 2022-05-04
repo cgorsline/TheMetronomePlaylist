@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome.services
+package com.example.themetronomeplaylist.services
 
 import android.app.*
 import android.content.Intent
@@ -8,8 +8,8 @@ import android.media.SoundPool
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
-import geva.oren.android_kotlin_metronome.MainActivity
-import geva.oren.android_kotlin_metronome.R
+import com.example.themetronomeplaylist.MainActivity
+import com.example.themetronomeplaylist.R
 import kotlinx.coroutines.*
 
 private const val TAG = "METRONOME_SERVICE"
@@ -41,7 +41,7 @@ class MetronomeService : Service() {
     private var emphasis = true
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent?.action==STOP_SERVICE) {
+        if (intent?.action== STOP_SERVICE) {
             pause()
             stopService(intent)
         }

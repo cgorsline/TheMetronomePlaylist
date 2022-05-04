@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome.fragments
+package com.example.themetronomeplaylist.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,9 +8,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import geva.oren.android_kotlin_metronome.R
-import geva.oren.android_kotlin_metronome.services.MetronomeService
-import geva.oren.android_kotlin_metronome.views.RotaryKnobView
+import com.example.themetronomeplaylist.R
+import com.example.themetronomeplaylist.services.MetronomeService
+import com.example.themetronomeplaylist.views.RotaryKnobView
+import geva.oren.android_kotlin_metronome.fragments.AbstractMetronomeFragment
 import kotlinx.android.synthetic.main.digital_metronome_fragment.*
 
 

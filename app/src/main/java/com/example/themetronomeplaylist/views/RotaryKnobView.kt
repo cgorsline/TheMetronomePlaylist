@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome.views
+package com.example.themetronomeplaylist.views
 
 import android.content.Context
 import android.graphics.Matrix
@@ -11,7 +11,7 @@ import android.view.MotionEvent
 import android.widget.ImageView.ScaleType
 import android.widget.RelativeLayout
 import androidx.core.view.GestureDetectorCompat
-import geva.oren.android_kotlin_metronome.R
+import com.example.themetronomeplaylist.R
 import kotlinx.android.synthetic.main.rotary_knob_view.view.*
 import kotlin.math.atan2
 

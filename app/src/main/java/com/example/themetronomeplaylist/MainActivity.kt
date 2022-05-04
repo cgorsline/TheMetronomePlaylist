@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome
+package com.example.themetronomeplaylist
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import geva.oren.android_kotlin_metronome.services.MetronomeService
+import com.example.themetronomeplaylist.services.MetronomeService
+import com.example.themetronomeplaylist.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
