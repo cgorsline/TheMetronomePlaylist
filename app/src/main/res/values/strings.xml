@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Timekeeper Metronome</string>
     <string name="info_menu_item">Information</string>
@@ -23,8 +22,14 @@
     <string name="ding">DING</string>
     <string name="beep">BEEP</string>
     <string name="tap">tap</string>
-    <string name="about_text"></string>
-    <string name="aboutFooterText"></string>
+    <string name="about_text">Metronome is an easy to use, lightweight and comprehensive metronome
+        app.\n
+        I built this project mainly as a means to learning Kotlin and Android development.\n
+        It was designed to resemble a simple digital metronome, and include the features people
+        actually use on metronomes.\n
+        The base code is free and open source - available at <a href="https://github.com/o4oren/android-kotlin-metronome">Github</a>.
+    </string>
+    <string name="aboutFooterText">(c) Oren Geva 2020</string>
     <string name="aboutHeading">About Timekeeper Metronome</string>
     <string name="mechanical_metronome">Metronome</string>
     <string name="metronome_arm">metronome_arm</string>
