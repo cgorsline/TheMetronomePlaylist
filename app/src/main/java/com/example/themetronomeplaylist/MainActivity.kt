@@ -1,4 +1,4 @@
-package com.example.themetronomeplaylist
+package geva.oren.android_kotlin_metronome
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.example.themetronomeplaylist.services.MetronomeService
+import geva.oren.android_kotlin_metronome.services.MetronomeService
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-
+    /**
+     * Initialization - create nav, action bar and starting the metronome service
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
