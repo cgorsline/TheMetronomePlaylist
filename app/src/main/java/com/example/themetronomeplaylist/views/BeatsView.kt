@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome.views
+package com.example.themetronomeplaylist.views
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -8,7 +8,7 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import geva.oren.android_kotlin_metronome.R
+import com.example.themetronomeplaylist.R
 
 const val MAX_BEAT = 9
 

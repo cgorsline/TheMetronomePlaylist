@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/metronome_background_gradient"
-    tools:context="geva.oren.android_kotlin_metronome.fragments.DigitalMetronomeFragment">
+    tools:context=".fragments.DigitalMetronomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/screenLayout"
@@ -115,9 +115,9 @@
             app:layout_constraintStart_toStartOf="@+id/rhythmImage"
             app:layout_constraintTop_toTopOf="@+id/tempoLabelText" />
 
-        <geva.oren.android_kotlin_metronome.views.TonesView
+        <com.example.themetronomeplaylist.views.TonesView
             android:id="@+id/tonesView"
-            class="geva.oren.android_kotlin_metronome.views.TonesView"
+            class="com.example.themetronomeplaylist.views.TonesView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +127,7 @@
 
         <view
             android:id="@+id/beatsView"
-            class="geva.oren.android_kotlin_metronome.views.BeatsView"
+            class="com.example.themetronomeplaylist.views.BeatsView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -248,7 +248,7 @@
 
     <view
         android:id="@+id/rotaryKnob"
-        class="geva.oren.android_kotlin_metronome.views.RotaryKnobView"
+        class="com.example.themetronomeplaylist.views.RotaryKnobView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

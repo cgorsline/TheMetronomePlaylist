@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome.fragments
+package com.example.themetronomeplaylist.fragments
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import geva.oren.android_kotlin_metronome.R
+import com.example.themetronomeplaylist.R
 import kotlinx.android.synthetic.main.info_fragment.*
 import kotlinx.android.synthetic.main.digital_metronome_fragment.*
 

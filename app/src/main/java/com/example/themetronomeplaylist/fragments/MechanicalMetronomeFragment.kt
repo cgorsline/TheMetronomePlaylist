@@ -1,4 +1,4 @@
-package geva.oren.android_kotlin_metronome.fragments
+package com.example.themetronomeplaylist.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import geva.oren.android_kotlin_metronome.R
+import com.example.themetronomeplaylist.R
+import geva.oren.android_kotlin_metronome.fragments.AbstractMetronomeFragment
 import kotlinx.android.synthetic.main.mechanical_metronome_fragment.*
 
 
