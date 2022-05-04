@@ -1,4 +1,4 @@
-package com.example.themetronomeplaylist.views
+package geva.oren.android_kotlin_metronome.views
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -8,10 +8,13 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import com.example.themetronomeplaylist.R
+import geva.oren.android_kotlin_metronome.R
 
 const val MAX_BEAT = 9
 
+/**
+ * Displays the beats and active beat dynamically
+ */
 class BeatsView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
@@ -22,10 +25,10 @@ class BeatsView @JvmOverloads constructor(
             resetBeats(true)
         }
     var isEmphasis = true
-        set(isEmphasis) {
-            field = isEmphasis
-            resetBeats(false)
-        }
+    set(isEmphasis) {
+        field = isEmphasis
+        resetBeats(false)
+    }
     private var highlightedBeat = -1
     private val firstEmptyCircle =
         ContextCompat.getDrawable(context, R.drawable.first_beat_circle_empty)
@@ -89,6 +92,10 @@ class BeatsView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Resets the beats view
+     * @param resetHighlightedBeat - indicates if the highlighted beat should be reset to zero
+     */
     fun resetBeats(resetHighlightedBeat: Boolean) {
         if (resetHighlightedBeat) highlightedBeat = -1
         removeAllViews()

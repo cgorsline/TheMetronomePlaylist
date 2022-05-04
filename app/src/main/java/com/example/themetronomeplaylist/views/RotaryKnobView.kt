@@ -1,4 +1,4 @@
-package com.example.themetronomeplaylist.views
+package geva.oren.android_kotlin_metronome.views
 
 import android.content.Context
 import android.graphics.Matrix
@@ -11,7 +11,7 @@ import android.view.MotionEvent
 import android.widget.ImageView.ScaleType
 import android.widget.RelativeLayout
 import androidx.core.view.GestureDetectorCompat
-import com.example.themetronomeplaylist.R
+import geva.oren.android_kotlin_metronome.R
 import kotlinx.android.synthetic.main.rotary_knob_view.view.*
 import kotlin.math.atan2
 
@@ -57,6 +57,32 @@ class RotaryKnobView @JvmOverloads constructor(
         gestureDetector = GestureDetectorCompat(context, this)
     }
 
+    /**
+     * Calculate the angle from x,y coordinates of the touch event
+     * explanation - 0,0 in android is top left corner.
+     * Dividing x and y by height and width we normalize them to the range of 0 - 1 values:
+     * (0,0) top left, (1,1) bottom right.
+     * While x's direction is correct - going up from left to right, y's isn't - it's
+     * lowest value is at the top. W
+     * So we reverse it by subtracting y from 1.
+     * Now x is going from 0 (most left) to 1 (most right),
+     * and Y is going from 0 (most downwards) to 1 (most upwards).
+     * We now need to bring 0,0 to the middle - so subtract 0.5 from both x and y.
+     * now 0,0 is in the middle, 0, 0.5 is at 12 o'clock and 0.5, 0 is at 3 o'clock.
+     * Now that we have the coordinates in proper cartesian coordinate system - and we can calculate
+     * "theta" - the angle between the x axis and the point by calculating atan2(y,x).
+     * However, theta is the angle between the x axis and the point, and it rises as we turn
+     * counter-clockwise. In addition, atan2 returns (in radians) angles in the range of -180
+     * through 180 degrees (-PI through PI). And we want 0 to be at 12 o'clock.
+     * So we reverse the direction of the angle by prefixing it with a minus sign,
+     * and add 90 to move the "zero degrees" point north (taking care to handling the range between
+     * 180 and 270 degrees, bringing them to their proper values of -180 .. -90 by adding 360 to the
+     * value.
+     *
+     * @param x - x coordinate of the touch event
+     * @param y - y coordinate of the touch event
+     * @return
+     */
     private fun calculateAngle(x: Float, y: Float): Float {
         val px = (x / width.toFloat()) - 0.5
         val py = ( 1 - y / height.toFloat()) - 0.5
@@ -93,6 +119,9 @@ class RotaryKnobView @JvmOverloads constructor(
         knobImageView.imageMatrix = matrix
     }
 
+    /**
+     * Sets knob to value's position
+     */
     fun setKnobPositionByValue(value: Int) {
         var angle = ((value - minValue) * divider) -150
         if (angle > 180) angle -= 360
@@ -100,6 +129,12 @@ class RotaryKnobView @JvmOverloads constructor(
         setKnobPosition(angle)
     }
 
+    /**
+     *
+     * We're only interested in e2 - the coordinates of the end movement.
+     * We calculate the polar angle (Theta) from these coordinates and use these to animate the
+     * knob movement and calculate the value
+     */
     override fun onScroll(e1: MotionEvent, e2: MotionEvent, distanceX: Float, distanceY: Float)
             : Boolean {
 
@@ -112,8 +147,8 @@ class RotaryKnobView @JvmOverloads constructor(
             // The range is the 300 degrees between -150 and 150, so we'll add 150 to adjust the
             // range to 0 - 300
             val valueRangeDegrees = rotationDegrees + 150
-            value = ((valueRangeDegrees / divider) + minValue).toInt()
-            if (listener != null) listener!!.onRotate(value)
+                value = ((valueRangeDegrees / divider) + minValue).toInt()
+                if (listener != null) listener!!.onRotate(value)
         }
         return true
     }
