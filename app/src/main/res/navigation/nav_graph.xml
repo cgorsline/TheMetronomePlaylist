@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/MetronomeFragment"
-        android:name="com.example.themetronomeplaylist.fragments.DigitalMetronomeFragment"
+        android:name="geva.oren.android_kotlin_metronome.fragments.DigitalMetronomeFragment"
         android:label="@string/metronome_fragment_label"
-        tools:layout="@layout/fragment_digital_metronome">
+        tools:layout="@layout/digital_metronome_fragment">
 
         <action
             android:id="@+id/action_MetronomeFragment_to_InfoFragment"
@@ -20,12 +20,12 @@
     </fragment>
     <fragment
         android:id="@+id/info_fragment"
-        android:name="com.example.themetronomeplaylist.fragments.InfoFragment"
+        android:name="geva.oren.android_kotlin_metronome.fragments.InfoFragment"
         android:label="@string/info_fragment_label"
-        tools:layout="@layout/fragment_info"/>
+        tools:layout="@layout/info_fragment"/>
     <fragment
         android:id="@+id/mechanicalMetronomeFragment"
-        android:name="com.example.themetronomeplaylist.fragments.MechanicalMetronomeFragment"
+        android:name="geva.oren.android_kotlin_metronome.fragments.MechanicalMetronomeFragment"
         android:label="@string/mechanical_metronome"
-        tools:layout="@layout/fragment_mechanical_metronome" />
+        tools:layout="@layout/mechanical_metronome_fragment" />
 </navigation>
