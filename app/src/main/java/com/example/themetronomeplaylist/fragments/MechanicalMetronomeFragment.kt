@@ -1,19 +1,19 @@
-package com.example.themetronomeplaylist.fragments
+package geva.oren.android_kotlin_metronome.fragments
 
-import android.icu.text.Transliterator
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.themetronomeplaylist.R
-import android.util.Log
-import android.view.Gravity.CENTER
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.GridLayout.CENTER
-import kotlinx.android.synthetic.main.fragment_mechanical_metronome.*
+import geva.oren.android_kotlin_metronome.R
+import kotlinx.android.synthetic.main.mechanical_metronome_fragment.*
 
+
+/**
+ * Mechanical metronome fragment
+ */
 class MechanicalMetronomeFragment : AbstractMetronomeFragment() {
 
     private var duration = 1000L
@@ -22,8 +22,12 @@ class MechanicalMetronomeFragment : AbstractMetronomeFragment() {
     private lateinit var rightToLeftAnimation: Animation
     private lateinit var leftToRightAnimation: Animation
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_mechanical_metronome, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.mechanical_metronome_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,7 +38,7 @@ class MechanicalMetronomeFragment : AbstractMetronomeFragment() {
     }
 
     private fun animateArm(duration: Long) {
-        Log.i("Mechanical", "animate with $duration")
+        Log.i("Mechanical", "anitate with $duration")
 
         val animation = when(position) {
             Position.LEFT -> {
@@ -50,11 +54,12 @@ class MechanicalMetronomeFragment : AbstractMetronomeFragment() {
                 midToRightAnimation
             }
         }
+
         animation.duration = duration
         metronomeArmView.startAnimation(animation)
     }
 
-    override fun onTick(interval: Int)  {
+    override fun onTick(interval: Int) {
         duration = interval.toLong()
         activity?.runOnUiThread {
             animateArm(duration)
@@ -67,3 +72,5 @@ class MechanicalMetronomeFragment : AbstractMetronomeFragment() {
         RIGHT(2);
     }
 }
+
+

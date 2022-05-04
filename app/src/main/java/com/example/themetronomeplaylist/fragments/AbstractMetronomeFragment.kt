@@ -1,18 +1,18 @@
-package com.example.themetronomeplaylist.fragments
+package geva.oren.android_kotlin_metronome.fragments
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.os.Bundle
 import android.os.IBinder
-import com.example.themetronomeplaylist.services.MetronomeService
+import android.view.View
+import androidx.fragment.app.Fragment
+import geva.oren.android_kotlin_metronome.services.MetronomeService
 
 abstract class AbstractMetronomeFragment : Fragment(), MetronomeService.TickListener{
     protected var isBound = false
-    protected var metronomeService: MetronomeService? =null
+    protected var metronomeService: MetronomeService? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,7 +20,12 @@ abstract class AbstractMetronomeFragment : Fragment(), MetronomeService.TickList
     }
 
     private fun bindService() {
-        activity?.bindService(Intent(activity,MetronomeService::class.java), mConnection, Context.BIND_AUTO_CREATE)
+        activity?.bindService(
+            Intent(
+                activity,
+                MetronomeService::class.java
+            ), mConnection, Context.BIND_AUTO_CREATE
+        )
         isBound = true
     }
 
@@ -40,7 +45,8 @@ abstract class AbstractMetronomeFragment : Fragment(), MetronomeService.TickList
         super.onDestroy()
         if (isBound) {
             metronomeService?.removeTickListener(this)
-            requireActivity().unbindService(mConnection)
+            // Detach our existing connection.
+            activity!!.unbindService(mConnection)
             isBound = false
         }
     }
